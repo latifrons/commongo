@@ -24,6 +24,12 @@ func ViperMustGetBool(key string) bool {
 	}
 	return viper.GetBool(key)
 }
+func ViperMustGetFloat64(key string) float64 {
+	if !viper.IsSet(key) || viper.GetString(key) == "" {
+		logrus.WithField("key", key).Fatal("config missing")
+	}
+	return viper.GetFloat64(key)
+}
 func ViperMustGetDuration(key string) time.Duration {
 	if !viper.IsSet(key) || viper.GetString(key) == "" {
 		logrus.WithField("key", key).Fatal("config missing")
