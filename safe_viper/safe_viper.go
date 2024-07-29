@@ -24,6 +24,7 @@ func ViperMustGetBool(key string) bool {
 	}
 	return viper.GetBool(key)
 }
+
 func ViperMustGetFloat64(key string) float64 {
 	if !viper.IsSet(key) || viper.GetString(key) == "" {
 		logrus.WithField("key", key).Fatal("config missing")
